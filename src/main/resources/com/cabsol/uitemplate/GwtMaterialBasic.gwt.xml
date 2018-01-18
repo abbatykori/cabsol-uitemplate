@@ -34,7 +34,7 @@
 
     <!--GWT Material-->
     <inherits name="gwt.material.design.GwtMaterialBasicWithJQuery"/>
-    <!--<inherits name="gwt.material.design.themes.ThemeBlue"/>-->
+    <inherits name="gwt.material.design.themes.ThemeBlue"/>
     <inherits name="gwt.material.design.addins.GwtMaterialAddinsDebug"/>
     <inherits name="gwt.material.design.GwtMaterialTableDebug"/>
 

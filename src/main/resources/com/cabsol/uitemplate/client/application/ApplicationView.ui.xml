@@ -23,29 +23,48 @@
 
     <ui:with field="res" type="com.cabsol.uitemplate.client.resources.AppResources"/>
 
+    <!--<ui:style>-->
+        <!--@external side-nav, active;-->
+        <!--body{-->
+            <!--background-color: #fafafa;-->
+        <!--}-->
+        <!--.side-nav li.active{-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</ui:style>-->
     <m:MaterialPanel>
-        <m:MaterialHeader>
-            <m:MaterialNavBar activates="sidenav">
-                <m:MaterialNavBrand paddingLeft="60" text="App" />
+        <!-- Header -->
+        <m:MaterialHeader layoutPosition="FIXED" width="100%" depth="996" top="0" >
+            <!-- NavBar -->
+            <m:MaterialNavBar backgroundColor="BLUE" activates="sidenavInbox">
+                <m:MaterialNavBrand paddingLeft="60" text="Google Inbox" />
                 <m:MaterialNavSection float="RIGHT">
-                    <m:MaterialLink text="Link 1"/>
-                    <m:MaterialLink iconType="POLYMER" />
+                    <m:MaterialLink iconType="APPS" />
+                    <m:MaterialLink iconType="NOTIFICATIONS" />
+                    <m:MaterialImage circle="true" width="40px" height="40px" marginTop="12" marginRight="12" url="https://lh3.googleusercontent.com/-Zu_vZFIl9Ms/AAAAAAAAAAI/AAAAAAAAALk/2pPyCa-IKHg/s60-p-rw-no/photo.jpg" backgroundColor="WHITE" />
                 </m:MaterialNavSection>
             </m:MaterialNavBar>
         </m:MaterialHeader>
 
-        <m:MaterialSideNavPush m:id="sidenav" width="280">
-            <m:MaterialLink text="Link 1" iconType="POLYMER"/>
-            <m:MaterialLink text="Link 2" iconType="POLYMER"/>
-            <m:MaterialLink text="Link 3" iconType="POLYMER"/>
+        <!-- SideNav -->
+        <m:MaterialSideNavPush m:id="sidenavInbox" width="250" withHeader="true">
+            <m:MaterialLink text="Inbox" iconType="INBOX" iconColor="BLUE" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Snoozed" iconType="ACCESS_TIME" iconColor="ORANGE" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Done" separator="true" iconType="CHECK" iconColor="GREEN" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Drafts" iconType="DRAFTS" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Sent" iconType="SEND" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Reminders" iconType="TOUCH_APP" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Trash" iconType="DELETE" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Spam" iconType="REPORT" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Contacts" iconType="CONTACTS" textColor="GREY_DARKEN_2"/>
+            <m:MaterialLink text="Gmail" iconType="MAIL" textColor="GREY_DARKEN_2"/>
         </m:MaterialSideNavPush>
 
-        <m:MaterialContainer>
-            <m:MaterialPanel textAlign="CENTER">
-                <m:MaterialIcon marginTop="120" textColor="BLUE_DARKEN_1" iconType="POLYMER" iconSize="LARGE"/>
-                <m:MaterialLabel text="GMD 2.0" textColor="BLUE" fontSize="2em"/>
-                <m:MaterialLabel text="Start building now your gwt-material apps." textColor="BLUE" fontSize="0.8em"/>
-            </m:MaterialPanel>
+        <!-- Container -->
+        <m:MaterialContainer paddingLeft="330" paddingRight="100" marginTop="80">
+
+
+
         </m:MaterialContainer>
 
     </m:MaterialPanel>
