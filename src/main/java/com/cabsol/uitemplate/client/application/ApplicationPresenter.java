@@ -19,6 +19,7 @@
  */
 package com.cabsol.uitemplate.client.application;
 
+import com.cabsol.uitemplate.shared.model.Person;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -29,9 +30,30 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ApplicationPresenter
         extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
     interface MyView extends View {
+        void setPersons(List<Person> persons);
+    }
+
+    @Override
+    protected void onReveal() {
+        super.onReveal();
+        loadPersons();
+    }
+
+    private void loadPersons() {
+        Person person = new Person(1, "Jerry", "Adamson", "08034828755", "Person");
+        Person person2 = new Person(2, "Jerry2", "Adamson2", "08034828755", "Person");
+
+        List<Person> persons = new ArrayList<>();
+        persons.add(person);
+        persons.add(person2);
+
+        getView().setPersons(persons);
     }
 
     @ProxyStandard

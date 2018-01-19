@@ -21,14 +21,34 @@ package com.cabsol.uitemplate.client.application;
 
 import javax.inject.Inject;
 
+import com.cabsol.uitemplate.client.ui.factory.PersonRowFactory;
+import com.cabsol.uitemplate.shared.model.Person;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
+import gwt.material.design.client.ui.MaterialButton;
+import gwt.material.design.client.ui.MaterialToast;
+import gwt.material.design.client.ui.table.MaterialDataTable;
+import gwt.material.design.client.ui.table.cell.TextColumn;
+
+import java.util.List;
 
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
+    @UiField
+    MaterialButton buttonX;
+    @UiField
+    MaterialDataTable table;
+
+    @Override
+    public void setPersons(List<Person> persons) {
+        table.setRowData(0, persons);
+    }
+
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
 
@@ -36,6 +56,38 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     ApplicationView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+        initTable();
+    }
+
+    private void initTable() {
+        table.setRowFactory(new PersonRowFactory());
+
+        table.addColumn(new TextColumn<Person>() {
+            @Override
+            public String getValue(Person person) {
+                return person.getId() + "";
+            }
+        }, "ID");
+
+        table.addColumn(new TextColumn<Person>() {
+            @Override
+            public String getValue(Person person) {
+                return person.getFirstName();
+            }
+        }, "First Name");
+
+        table.addColumn(new TextColumn<Person>() {
+            @Override
+            public String getValue(Person person) {
+                return person.getLastName();
+            }
+        }, "Last Name");
+
+    }
+
+    @UiHandler("buttonX")
+    public void buttonXClick(ClickEvent event) {
+        MaterialToast.fireToast("Hello GWT!!");
     }
 
 }
