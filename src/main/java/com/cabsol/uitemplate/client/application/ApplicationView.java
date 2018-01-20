@@ -39,8 +39,7 @@ import gwt.material.design.client.ui.table.cell.TextColumn;
 import java.util.List;
 
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
-    @UiField
-    MaterialButton buttonX;
+
     @UiField
     MaterialDataTable table;
 
@@ -85,9 +84,5 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 
     }
 
-    @UiHandler("buttonX")
-    public void buttonXClick(ClickEvent event) {
-        MaterialToast.fireToast("Hello GWT!!");
-    }
 
 }
